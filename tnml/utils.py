@@ -19,7 +19,7 @@ class Embedding(tf.keras.layers.Layer):
             emb = []
             for j in range(self.d):
                 emb.append(tf.math.sin(pi*(j+1)*(x+1)/2.) /
-                           tf.math.sqrt(1.0*d))
+                           sqrt(1.0*d))
         else:
             xc = tf.math.cos(x*pi/2.)
             xs = tf.math.sin(x*pi/2.)
