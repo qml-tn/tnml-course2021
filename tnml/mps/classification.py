@@ -152,6 +152,12 @@ class ClassGenMPS(ClassificationMPS):
 
         return samp
 
+    def call(self, input):
+        # Add reguralizers to the loss
+        self.add_loss(self.regularizer(self.tensor))
+        self.add_loss(tf.math.log(self.norm())**2)
+        return super(ClassGenMPS, self).call(input)
+
 
 def pdf(v, x):
     pi_half = np.pi/2.0
