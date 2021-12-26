@@ -4,7 +4,7 @@ from tnml.utils import Embedding
 
 class ClassificationMPS(tf.keras.layers.Layer):
     def __init__(self, D, d, C, stddev=0.5):
-        super(MPS, self).__init__()
+        super(ClassificationMPS, self).__init__()
         self.D = D
         self.d = d
         self.C = C
