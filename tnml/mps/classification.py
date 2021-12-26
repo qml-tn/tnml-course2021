@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tnml.utils import Embedding
+from tnml.utils import EmbeddingOrthonormal
 import numpy as np
 
 class ClassificationMPS(tf.keras.layers.Layer):
@@ -54,7 +54,7 @@ class ClassGenMPS(ClassificationMPS):
         super(ClassGenMPS, self).__init__(D=D, d=d, C=C, stddev=stddev)
 
         self.regularizer = tf.keras.regularizers.l1_l2(l1=l1, l2=l2)
-        self.embedding = Embedding(d)
+        self.embedding = EmbeddingOrthonormal(d)
         self.Als = [None for _ in range(C)]
 
     def norm(self):
