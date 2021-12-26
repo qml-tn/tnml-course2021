@@ -4,9 +4,10 @@ import scipy
 
 
 class Embedding(tf.keras.layers.Layer):
-    def __init__(self, d=2):
+    def __init__(self, d=2, dtype=tf.float32):
         super(Embedding, self).__init__()
         self.d = d
+        self.dtype = dtype
         self.flatten = tf.keras.layers.Flatten()
 
     def call(self, input):
@@ -18,6 +19,6 @@ class Embedding(tf.keras.layers.Layer):
         xs = tf.math.sin(x*pi/2.)
         emb = []
         for j in range(self.d):
-            emb.append(tf.math.sqrt(scipy.special.binom(d-1, j))
+            emb.append(tf.cast(tf.math.sqrt(scipy.special.binom(d-1, j)), dtype=self.dtype)
                        * xc**(d-j-1.0) * xs**(1.0*j))
         return tf.stack(emb, axis=-1)  # (N, nbatch, d)
