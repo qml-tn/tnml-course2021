@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tnml.mps.utils import Embedding
+from tnml.utils import Embedding
 
 
 class ClassificationMPS(tf.keras.layers.Layer):
