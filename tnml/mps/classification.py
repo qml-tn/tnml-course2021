@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tnml.utils import Embedding
-
+import numpy as np
 
 class ClassificationMPS(tf.keras.layers.Layer):
     def __init__(self, D, d, C, stddev=0.5):
